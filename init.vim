@@ -16,9 +16,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim'
 
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'Shougo/context_filetype.vim'
 Plug 'davidhalter/jedi-vim'
@@ -33,9 +30,12 @@ Plug 'fisadev/vim-isort'
 Plug 'valloric/MatchTagAlways'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/YankRing.vim'
-Plug 'neomake/neomake'
 
 call plug#end()
+
+highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
+highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
+highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
 
 " Run linter on write
 autocmd! BufWritePost * Neomake
