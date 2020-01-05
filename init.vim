@@ -151,6 +151,5 @@ let g:yankring_clipboard_monitor = 0
 
 " Airline ------------------------------
 let g:airline_powerline_fonts = 0
-"let g:airline_theme = 'bubblegum'
-let g:airline_theme='monokai_tasty'
+let g:airline_theme = 'bubblegum'
 let g:airline#extensions#whitespace#enabled = 0
