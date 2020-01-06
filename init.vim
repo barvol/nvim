@@ -6,7 +6,8 @@ Plug 'majutsushi/tagbar'
 " Search results counter
 Plug 'vim-scripts/IndexedSearch'
 
-Plug 'patstockwell/vim-monokai-tasty'
+"Themes
+Plug 'morhetz/gruvbox'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -14,11 +15,12 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/deoplete.nvim'
 
+Plug 'Shougo/deoplete.nvim'
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'Shougo/context_filetype.vim'
 Plug 'davidhalter/jedi-vim'
+
 " Изучить
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-surround'
@@ -30,25 +32,27 @@ Plug 'fisadev/vim-isort'
 Plug 'valloric/MatchTagAlways'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/YankRing.vim'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
-highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
-highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
-highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
+"Colorscheme --------------------------
+colorscheme gruvbox
 
 " tabs and spaces handling
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set noswapfile
+set ignorecase
+set smartcase
+
 " show line numbers
 set nu
+
 " remove ugly vertical lines on window division
 set fillchars+=vert:\ 
-
-"Colorscheme 
-colorscheme vim-monokai-tasty
 
 " needed so deoplete can auto select the first suggestion
 set completeopt+=noinsert
@@ -65,13 +69,6 @@ set wildmode=list:longest
 " save as sudo
 ca w!! w !sudo tee "%"
 
-" tab navigation mappings
-map tt :tabnew 
-map <M-Right> :tabn<CR>
-imap <M-Right> <ESC>:tabn<CR>
-map <M-Left> :tabp<CR>
-imap <M-Left> <ESC>:tabp<CR>
-
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
 
@@ -83,6 +80,20 @@ autocmd BufWritePre *.py :%s/\s\+$//e
 
 " fix problems with uncommon shells (fish, xonsh) and plugins running commands
 set shell=/bin/bash 
+
+" Mapping --------------------------
+let g:mapleader=','
+
+" tab navigation mappings
+map tt :tabnew 
+map <M-Right> :tabn<CR>
+imap <M-Right> <ESC>:tabn<CR>
+map <M-Left> :tabp<CR>
+imap <M-Left> <ESC>:tabp<CR>
+
+
+" EasyMotion prefix s --------------
+map <Leader> <Plug>(easymotion-prefix)
 
 " Fzf ------------------------------
 
@@ -107,6 +118,16 @@ nmap ,wF :execute ":Lines " . expand('<cword>')<CR>
 " commands finder mapping
 nmap ,c :Commands<CR>
 
+" All these mappings work only for python code:
+" Go to definition
+let g:jedi#goto_command = ',d'
+" Find ocurrences
+let g:jedi#usages_command = ',o'
+" Find assignments
+let g:jedi#goto_assignments_command = ',a'
+" Go to definition in new tab
+nmap ,D :tab split<CR>:call jedi#goto()<CR>
+
 " Deoplete -----------------------------
 
 " Use deoplete.
@@ -121,17 +142,6 @@ let g:context_filetype#same_filetypes._ = '_'
 
 " Disable autocompletion (using deoplete instead)
 let g:jedi#completions_enabled = 0
-
-" All these mappings work only for python code:
-" Go to definition
-let g:jedi#goto_command = ',d'
-" Find ocurrences
-let g:jedi#usages_command = ',o'
-" Find assignments
-let g:jedi#goto_assignments_command = ',a'
-" Go to definition in new tab
-nmap ,D :tab split<CR>:call jedi#goto()<CR>
-
 
 " Autoclose ------------------------------
 
