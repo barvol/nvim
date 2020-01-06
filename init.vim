@@ -37,11 +37,6 @@ highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
 highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
 highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
 
-" Run linter on write
-autocmd! BufWritePost * Neomake
-let g:neomake_virtualtext_current_error = 0
-
-
 " tabs and spaces handling
 set expandtab
 set tabstop=4
