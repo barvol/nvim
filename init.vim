@@ -20,6 +20,8 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'Shougo/context_filetype.vim'
 Plug 'davidhalter/jedi-vim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 
 " Изучить
 Plug 'Townk/vim-autoclose'
