@@ -15,6 +15,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 
 Plug 'Shougo/deoplete.nvim'
 Plug 'deoplete-plugins/deoplete-jedi'
@@ -160,3 +161,9 @@ let g:yankring_clipboard_monitor = 0
 let g:airline_powerline_fonts = 0
 let g:airline_theme = 'bubblegum'
 let g:airline#extensions#whitespace#enabled = 0
+
+" Ack.vim ------------------------------
+
+" mappings
+nmap ,r :Ack 
+nmap ,wr :execute ":Ack " . expand('<cword>')<CR>
